@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div id='app'>
+        <h2>{{counter}}</h2>
+        <button v-on:click="increment()">+</button>
+        <button v-on:click="descrement()">-</button>
+
+        <!-- 语法糖的写法 -->
+        <button @click="increment()">+</button>
+    </div>
+    
+    <script src="../js/vue.js"></script>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                counter: 0
+            },
+            methods: {
+                // 函数增强写法 ES6的写法
+                increment() {
+                    this.counter++
+                },
+                descrement() {
+                    this.counter--
+                }
+            }
+        });
+    </script>
+</body>
+</html>

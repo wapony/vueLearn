@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div id='app'>
+        <!-- 通过methods -->
+        <h2>{{getFullName()}}</h2>
+
+
+        <!-- 通过computed -->
+        <h2>{{fullName}}</h2>
+    </div>
+    
+    <script src="../js/vue.js"></script>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                firstName: 'Kobe',
+                lastName: 'Bryant'
+            },
+            methods: {
+                getFullName: function() {
+                    // 没有缓存 会频繁的调用
+                    console.log('getFullName');
+                    return this.firstName + ' ' + this.lastName
+                }
+            },
+
+            computed: {
+                fullName: function() {
+                    // 有缓存 值不变的情况下 只会调用一次，性能比methods高
+                    console.log('fullName');
+                    return this.firstName + ' ' + this.lastName
+                }
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div id='app'>
+        <!-- style="{key(属性名): vaule(属性值)}" -->
+        <h2 :style="getStyle()">{{message}}</h2>
+    </div>
+    
+    <script src="../js/vue.js"></script>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                message: '你好啊',
+                finalSize: '100px',
+                finalColor: 'red',
+            },
+            methods: {
+                getStyle: function() {
+                    return {fontSize: this.finalSize, backgroundColor: this.finalColor}
+                }
+            }
+        });
+    </script>
+</body>
+</html>

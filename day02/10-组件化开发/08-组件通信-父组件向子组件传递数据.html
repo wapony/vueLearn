@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div id='app'>
+        <cpn :cmovies="movies" :cmessage="message"></cpn>
+    </div>
+    
+    <template id='cpn'>
+        <div>
+            <ul>
+                <li v-for='item in cmovies'>{{item}}</li>
+            </ul>
+            <h2>{{cmessage}}</h2>
+        </div>
+    </template>
+    <script src="../js/vue.js"></script>
+    <script>
+        const cpn = {
+            template: '#cpn',
+            // 父组件传递数据给子组件
+            props: {
+                cmovies: {
+                    type: Array,
+                    // 默认值如果是对象的话，需要写一个方法，返回一个对象
+                    default() {
+                        return []
+                    }
+                },
+                cmessage: {
+                    type: String,
+                    // 默认值是string的话，不用写一个方法了
+                    default: '',
+                    // 在初始化组件的时候， 改属性是不是必写的，默认是false
+                    required: true
+                }
+            }
+        }
+
+        const app = new Vue({
+            el: '#app',
+            data: {
+                movies: ['海王', '疾速备战', '速度与激情8', '奇迹'],
+                message: '我喜欢的电影' 
+            },
+            components: {
+                cpn
+            }
+        });
+    </script>
+</body>
+</html>

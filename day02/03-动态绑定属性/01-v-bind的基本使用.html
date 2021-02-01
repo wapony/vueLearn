@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div id='app'>
+        <!-- v-bind 属性绑定 数据 -->
+        <img v-bind:src="imgURL" alt="">
+        <a v-bind:href="aHref">百度一下</a>
+
+        <!-- 语法糖的写法 -->
+        <img :src="imgURL" alt="">
+        <a :href="aHref">百度一下</a>
+    </div>
+    
+    
+    <script src="../js/vue.js"></script>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                message: '你好啊',
+                imgURL: 'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fa0.att.hudong.com%2F52%2F62%2F31300542679117141195629117826.jpg&refer=http%3A%2F%2Fa0.att.hudong.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1613960995&t=7687356df3b424185f48becf7a50176f',
+                aHref: 'https://image.baidu.com/search/detail?ct=503316480&z=0&ipn=d&word=%E5%9B%BE%E7%89%87&hs=2&pn=1&spn=0&di=6050&pi=0&rn=1&tn=baiduimagedetail&is=0%2C0&ie=utf-8&oe=utf-8&cl=2&lm=-1&cs=3363295869%2C2467511306&os=892371676%2C71334739&simid=4203536407%2C592943110&adpicid=0&lpn=0&ln=30&fr=ala&fm=&sme=&cg=&bdtype=0&oriquery=%E5%9B%BE%E7%89%87&objurl=https%3A%2F%2Fgimg2.baidu.com%2Fimage_search%2Fsrc%3Dhttp%3A%2F%2Fa0.att.hudong.com%2F30%2F29%2F01300000201438121627296084016.jpg%26refer%3Dhttp%3A%2F%2Fa0.att.hudong.com%26app%3D2002%26size%3Df9999%2C10000%26q%3Da80%26n%3D0%26g%3D0n%26fmt%3Djpeg%3Fsec%3D1613961095%26t%3D7af947157cfd5b76edd414fb5e84a00f&fromurl=ippr_z2C%24qAzdH3FAzdH3Fooo_z%26e3Bfj6jg2jfjkw_z%26e3Bv54AzdH3FoAzdH3F%25E0%25bC%25AB%25Ec%25ld%25AA%25Em%25lC%25ba%25Em%25lm%25Ba%25Ec%25lF%25lF%25Ec%25la%25bD%25Em%25lF%25Ac%25Eb%25AF%25AdAzdH3F&gsm=2&islist=&querylist='
+            }
+        });
+    </script>
+
+</body>
+</html>

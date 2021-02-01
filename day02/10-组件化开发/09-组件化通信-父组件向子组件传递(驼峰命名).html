@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div id='app'>
+        <!-- html代码不支持驼峰命名需要添加 - 链接才可以 -->
+        <cpn :c-movies="movies" :c-message="message"></cpn>
+    </div>
+
+    <template id='cpn'>
+        <div>
+            <ul>
+                <li v-for='item in cMovies'>{{item}}</li>
+            </ul>
+            <h2>{{cMessage}}</h2>
+        </div>
+    </template>
+    <script src="../js/vue.js"></script>
+    <script>
+        const cpn = {
+            template: '#cpn',
+            // 父组件传递数据给子组件
+            props: {
+                // 驼峰式命名
+                cMovies: {
+                    type: Array,
+                    // 默认值如果是对象的话，需要写一个方法，返回一个对象
+                    default() {
+                        return []
+                    }
+                },
+                // 驼峰式命名
+                cMessage: {
+                    type: String,
+                    // 默认值是string的话，不用写一个方法了
+                    default: '',
+                    // 在初始化组件的时候， 改属性是不是必写的，默认是false
+                    required: true
+                }
+            }
+        }
+
+        const app = new Vue({
+            el: '#app',
+            data: {
+                movies: ['海王', '疾速备战', '速度与激情8', '奇迹'],
+                message: '我喜欢的电影'
+            },
+            components: {
+                cpn
+            }
+        });
+    </script>
+</body>
+
+</html>

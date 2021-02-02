@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 作用域插槽的作用是 替换父组件替换子组件内的标签，但是数据由子组件提供 -->
+    <!-- 目的是，父组件获取子组件的属性 -->
+    <div id='app'>
+        <cpn>
+            <template slot-scope="slot">
+                <span>{{slot.data.join(' - ')}}</span>
+            </template>
+
+            <template slot-scope="slot" slot="second">
+                <ul>
+                    <li v-for="item in slot.data">{{item}}</li>
+                </ul>
+            </template>
+
+        </cpn>
+   
+    </div>
+    
+    <template id="cpn">
+        <div>
+            <slot :data="pLanguages">
+                <ul>
+                    <li v-for="item in pLanguages">{{item}}</li>
+                </ul>
+            </slot>
+
+            <slot :data="pLanguages" name="second">
+                <span>{{pLanguages.join(" * ")}}</span>
+            </slot>
+        </div>
+    </template>
+
+    <script src="../js/vue.js"></script>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                message: '你好啊'
+            },
+            components: {
+                cpn: {
+                    template: "#cpn",
+                    data() {
+                        return {
+                            pLanguages: ['javascript', 'python', 'php', 'swift', 'objective-c']
+                        }
+                    }
+                }
+            }            
+        });
+    </script>
+</body>
+</html>

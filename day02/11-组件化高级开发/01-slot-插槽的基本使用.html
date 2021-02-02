@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 1. 插槽的基本使用 <slot></slog> -->
+    <!-- 2. 插槽的默认值使用 <slot><button></button></slog> -->
+    <!-- 3. 插槽的多个标签的使用  -->
+    <div id='app'>
+        <cpn>
+            <button>按钮</button>
+        </cpn>
+
+        <!-- 插槽多标签的使用 -->
+        <cpn>
+            <i>呵呵</i>
+            <div>我是div元素</div>
+            <p>我是p元素</p>
+        </cpn>
+
+        <cpn>
+            <span>哈哈</span>
+        </cpn>
+
+        <!-- 显示插槽的默认值，默认的是button -->
+        <cpn></cpn>
+
+    </div>
+    
+
+    <template id="cpn">
+        <div>
+            <h2>我是组件</h2>
+            <p>我是组件 哈哈哈</p>
+            <!-- 插槽预留给父组件让父组件个性化 -->
+            <slot><button>按钮</button></slot>
+        </div>
+    </template>
+    <script src="../js/vue.js"></script>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                message: '你好啊'
+            },
+            components: {
+                cpn: {
+                    template: '#cpn'
+                }
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .active {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <!-- 答案在p39课程 -->
+    <div id='app'>
+        <ul>
+            <li v-for="(m, index) in movies" v-on:click="liClick(index)" v-bind:class="getClasses()">{{index}} {{m}}</li>
+        </ul>
+    </div>
+    
+    <script src="../js/vue.js"></script>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                movies: ['海王', '海尔兄弟', '火影忍者', '进击的巨人'],
+                isActive: false
+            },
+            methods: {
+                liClick: function(index) {
+                    this.isActive = !this.isActive
+                },
+                getClasses: function() {
+                    return {active: this.isActive}
+                }
+            }
+        });
+    </script>
+</body>
+</html>

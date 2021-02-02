@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- vue 虚拟dom不会新建2套控件，会复用 -->
+    <div id='app'>
+        <span v-if="isUser">
+            <!-- for属性的作用是 点击label的时候焦点自动设置在input控件上 -->
+            <label for="userName">用户账号</label>
+            <!-- key解决虚拟dom复用的问题，key不一样的话，就不会复用之前的input了 -->
+            <input type="text" id="userName" placeholder="用户账号" key="userName">
+        </span>
+
+        <span v-else>
+            <!-- for属性的作用是 点击label的时候焦点自动设置在input控件上 -->
+            <label for="userEmail">用户邮箱</label>
+            <!-- key解决虚拟dom复用的问题，key不一样的话，就不会复用之前的input了 -->
+            <input type="text" id="userEmail" placeholder="用户邮箱" key="userEmail">
+        </span>
+
+        <button @click="isUser=!isUser">切换类型</button>
+    </div>
+
+    <script src="../js/vue.js"></script>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                isUser: true
+            }
+        });
+    </script>
+</body>
+
+</html>

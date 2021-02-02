@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .active {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    
+    <div id='app'>
+        <h2 class="active">{{message}}</h2>
+        <h2 :class="active">{{message}}</h2>
+
+        <!-- class="对象", class="{类名1: value1, 类名2: value2}" -->
+        <!-- value 是 boolean的 -->
+        <!-- vue会合并title active line 三个类， 动态类和普通类可以共存 -->
+        <h2 class="title" :class="{active: isActive, line: isLine}">{{message}}</h2>
+
+        <!-- 绑定方法 -->
+        <h2 :class="getClasses()">{{message}}</h2>
+
+        <button v-on:click="btnClick()">按钮</button>
+    </div>
+    
+    <script src="../js/vue.js"></script>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                message: '你好啊',
+                isActive: true,
+                isLine: true
+            },
+            methods:{
+                btnClick: function() {
+                    this.isActive = !this.isActive
+                },
+                getClasses: function() {
+                    return {active: this.isActive, line: this.isLine}
+                }
+            }
+        });
+    </script>
+</body>
+</html>

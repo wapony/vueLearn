@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div id='app'>
+        <!-- 使用v-on接收 自定义名为itemclick的事件, 由于事件是自定义的，即使不写() 也不会传递默认的event事件，而是传递自定义事件默认的参数 -->
+        <cpn @item-click="cpnClick"></cpn>
+    </div>
+    
+    <template id='cpn'>
+        <div>
+            <button v-for="item in categories" @click="btnClick(item)">{{item.name}}</button>
+        </div>
+    </template>
+
+    <script src="../js/vue.js"></script>
+    <script>
+        const cpn = {
+            template: '#cpn',
+            data() {
+                return {
+                    categories:[
+                        {id: 'aaaa', name: '热门推荐'},
+                        {id: 'bbbb', name: '手机数码'},
+                        {id: 'cccc', name: '家用家电'},
+                        {id: 'dddd', name: '情趣用品'}
+                    ]
+                }
+            },
+            methods: {
+                btnClick(item) {
+                    // emit 自己定义事件,  意思就是触发了自定义名为：itemClick的事件
+                    this.$emit('item-click', item)
+                }
+            }
+        }
+
+        const app = new Vue({
+            el: '#app',
+            data: {
+                message: '你好啊'
+            },
+            components: {
+                cpn
+            },
+            methods: {
+                cpnClick(item) {
+                    console.log('item 点击了', item);
+                }
+            }
+        });
+    </script>
+</body>
+</html>

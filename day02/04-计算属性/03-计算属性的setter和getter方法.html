@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <div id='app'>
+        {{fullName}}
+    </div>
+    
+    <script src="../js/vue.js"></script>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                firstName: 'kobe',
+                lastName: 'Bryant'
+            },
+            computed: {
+                // 计算属性一般不写set方法，只读属性， 完整的写法
+                // 如果写了 set方法是有参数的，跟oc一样
+                fullName: {
+                    set: function(newValue) {
+                        const names = newValue.split(' ')
+                        this.firstName = names[0]
+                        this.lastName = names[1]
+                    },
+                    get: function() {
+                        return this.firstName + ' ' + this.lastName
+                    }
+                }
+
+                // 上面完整写法的简写
+                // fullName: function() {
+                //     return this.firstName + ' ' + this.lastName
+                // }
+            }
+        });
+    </script>
+</body>
+</html>

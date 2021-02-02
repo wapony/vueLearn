@@ -1,0 +1,13 @@
+{
+  "presets": [
+    ["env", {
+      "modules": false,
+      "targets": {
+        // 市场份额>1%, 最近的2个版本， 不考虑ie<8的版本
+        "browsers": ["> 1%", "last 2 versions", "not ie <= 8"]
+      }
+    }],
+    "stage-2"
+  ],
+  "plugins": ["transform-vue-jsx", "transform-runtime"]
+}

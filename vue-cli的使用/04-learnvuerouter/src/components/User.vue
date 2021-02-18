@@ -18,6 +18,10 @@ export default {
     userId() {
       return this.$route.params.userId
     }
+  },
+
+  created() {
+    console.log('user created ++++');
   }
 };
 </script>

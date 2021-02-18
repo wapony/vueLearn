@@ -26,7 +26,7 @@ export default {
         this.$router.push(this.path)
     },
 
-    // 组件内路由守卫
+    // 组件内路由守卫, 记录即将离开时的path, 下次再进入的时候 activated 可以直接进入路由可以直接进入该path
     beforeRouteLeave(to, from, next) {
         this.path = this.$route.path
         next()

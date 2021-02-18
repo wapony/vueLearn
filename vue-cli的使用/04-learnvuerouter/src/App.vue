@@ -14,8 +14,9 @@
     <button @click="userClick">用户</button>
     <button @click="profileClick">档案</button>
 
-    // keep-alive 组件不需要再重新创建新的组件了，
-    // exclude 排除 某个组件， Profile= Profile 组件的name属性的值, 这个地方','之间不能加空格
+    <!-- keep-alive 组件不需要再重新创建新的组件了，
+    exclude 排除 某个组件， Profile= Profile 组件的name属性的值, 这个地方','之间不能加空格
+    include 包含 某个组件 -->
     <keep-alive exclude="Profile,User">
       <router-view/>
     </keep-alive>

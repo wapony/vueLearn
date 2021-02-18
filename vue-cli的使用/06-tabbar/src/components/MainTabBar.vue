@@ -40,6 +40,7 @@
 </template>
 
 <script>
+// @components 路径的别名
 import TabBar from '@components/tabbar/TabBar'
 import TabBarItem from '@components/tabbar/TabBarItem'
 

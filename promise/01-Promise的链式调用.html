@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // new Promise((resolve, reject) => {
+        //     setTimeout(() => {
+        //         resolve('aaaa')
+        //     }, 1000)
+        // }).then(res => {
+        //     console.log(res, '第一层的10行处理代码');
+
+        //     // 对结果进行第一次处理
+        //     return new Promise(resolve => {
+        //         resolve(res + '111')
+        //     })
+        // }).then(res => {
+        //     console.log(res, '第二层的10行处理代码');
+
+        //     return new Promise(resolve => {
+        //         resolve(res + '222')
+        //     })
+        // }).then(res => {
+        //     console.log(res, '第三层10行代码的处理');
+        // })
+
+        // 上面的简写, 因为第二第三步的promise内没有异步操作,所以可以简写
+        // new Promise((resolve, reject) => {
+        //     setTimeout(() => {
+        //         resolve('aaaa')
+        //     }, 1000)
+        // }).then(res => {
+        //     console.log(res, '第一层的10行处理代码');
+
+        //     // 对结果进行第一次处理
+        //     return Promise.resolve(res + '111')
+        // }).then(res => {
+        //     console.log(res, '第二层的10行处理代码');
+
+        //     return Promise.resolve(res + '222')
+        // }).then(res => {
+        //     console.log(res, '第三层10行代码的处理');
+        // })
+
+        // 最终简写的方案, 省略掉promise.resolve
+        // new Promise((resolve, reject) => {
+        //     setTimeout(() => {
+        //         resolve('aaaa')
+        //     }, 1000)
+        // }).then(res => {
+        //     console.log(res, '第一层的10行处理代码');
+
+        //     // 对结果进行第一次处理
+        //     return res + '111'
+        // }).then(res => {
+        //     console.log(res, '第二层的10行处理代码');
+
+        //     return res + '222'
+        // }).then(res => {
+        //     console.log(res, '第三层10行代码的处理');
+        // })
+
+        
+        // 想处理error的时候
+        new Promise((resolve, reject) => {
+            setTimeout(() => {
+                resolve('aaaa')
+            }, 1000)
+        }).then(res => {
+            console.log(res, '第一层的10行处理代码');
+
+            
+            // 对异常进行处理
+
+            // 方法一
+            // return Promise.reject('error message')
+
+            // 方法二
+            throw 'error message'
+        }).then(res => {
+            console.log(res, '第二层的10行处理代码');
+
+            return res + '222'
+        }).then(res => {
+            console.log(res, '第三层10行代码的处理');
+        }).catch(error => {
+            console.log(error);
+        })
+
+    </script>
+</body>
+</html>
